@@ -1,6 +1,6 @@
 //mouse
 
-var canvas = document.getElementById('canvas');
+var canvas = document.getElementById('libyxCanvas');
 var ctx = canvas.getContext("2d");
 var width = 100, height = 100;
 window.addEventListener("keydown", keyDown, false);
@@ -308,7 +308,7 @@ function Vector(x, y) {
     this.y = y;
 
     /**
-     * Return the magnitude of the vector
+     * Returns the magnitude of the vector
      * @returns number
      */
     this.magnitude = function () {
@@ -328,7 +328,7 @@ function Vector(x, y) {
     };
 
     /**
-     * Set the angle of the vector
+     * Returns the angle of the vector
      * @returns number
      */
     this.angle = function () {
@@ -336,13 +336,13 @@ function Vector(x, y) {
     };
 
     /**
-     * Rotates clockwise the vector
+     * Set the angle of the vector
      * @param a angle of rotation, in radian
      */
-    this.rotate = function (a) {
+    this.setAngle = function (a) {
         let magnitude = this.magnitude();
-        this.x = magnitude * Math.cos(a);
-        this.y = magnitude * Math.sin(a);
+        this.x = magnitude * Math.cos(-a);
+        this.y = magnitude * Math.sin(-a);
     }
 }
 //===============================================
@@ -380,26 +380,26 @@ function areCircleColliding(c1x, c1y, c1r, c2x, c2y, c2r) {
 /**
  * Return true if the rectangles are colliding
  *
- * @param hg1x x coordinate of the top-left corner of the first rectangle
- * @param hg1y y coordinate of the top-left corner of the first rectangle
- * @param bd1x x coordinate of the bottom-right corner of the first rectangle
- * @param bd1y x coordinate of the bottom-right corner of the first rectangle
- * @param hg2x x coordinate of the top-left corner of the first rectangle
- * @param hg2y y coordinate of the top-left corner of the first rectangle
- * @param bd2x x coordinate of the bottom-right corner of the first rectangle
- * @param bd2y x coordinate of the bottom-right corner of the first rectangle
+ * @param ul1x x coordinate of the top-left corner of the first rectangle
+ * @param ul1y y coordinate of the top-left corner of the first rectangle
+ * @param br1x x coordinate of the bottom-right corner of the first rectangle
+ * @param br1y x coordinate of the bottom-right corner of the first rectangle
+ * @param ul2x x coordinate of the top-left corner of the first rectangle
+ * @param ul2y y coordinate of the top-left corner of the first rectangle
+ * @param br2x x coordinate of the bottom-right corner of the first rectangle
+ * @param br2y x coordinate of the bottom-right corner of the first rectangle
  * @returns boolean
  */
-function areRectsColliding(hg1x, hg1y, bd1x, bd1y, hg2x, hg2y, bd2x, bd2y) {
-    if (hg1x > bd2x || hg2x > bd1x) {
+function areRectsColliding(ul1x, ul1y, br1x, br1y, ul2x, ul2y, br2x, br2y) {
+    if (ul1x > br2x || ul2x > br1x) {
         return false;
     }
-    return !(hg1y > bd2y || hg2y > bd1y);
+    return !(ul1y > br2y || ul2y > br1y);
 
 }
 
 /**
- * Return true if the a point is in the rectangle
+ * Return true if the point is in the rectangle
  * @param px x coordinate of the point
  * @param py y coordinate of the point
  * @param rx x coordinate of the top-left corner of the rectangle
@@ -413,8 +413,6 @@ function isPointInRect(px, py, rx, ry, rw, rh) {
     if (px > rx + rw) return false;
     if (py < ry) return false;
     return py <= ry + rh;
-
-
 }
 
 //===============================================

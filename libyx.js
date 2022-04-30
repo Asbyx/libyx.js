@@ -57,7 +57,7 @@ function log(text) {
 
 //Drawing functions==============================
 /**
- * Set the colour of the next shape drawn using rgba
+ * Set the color of the next shape drawn using rgba
  * @param a (0-255) red value
  * @param b (0-255) blue value
  * @param c (0-255) green value
@@ -121,7 +121,7 @@ function circle(x, y, r) {
 /**
  * Draw a line in the canvas
  * @param x x coordinate of the start of the line
- * @param y    y coordinate of the start of the line
+ * @param y y coordinate of the start of the line
  * @param xf x coordinate of the end of the line
  * @param yf y coordinate of the end of the line
  */
@@ -178,7 +178,7 @@ function newImage(src) {
  * @param r angle of rotation, can be undefined, "invert" to invert the image or a value in radian
  * @param center (boolean) Whether the image should be drawn with (x, y) as its center (default: false)
  */
-function drawImage(i, x, y, s1 = 1, s2 = 1, r, center = false) { //s1 et s2 le nombre de fois qu'on multiplie la largeur ou la hauteur, r pour la rotation (rad), mid = true => on dessine du milieu
+function drawImage(i, x, y, s1 = 1, s2 = 1, r, center = false) {
     if (r !== undefined) {
         if (r !== "invert") {
             ctx.translate(x, y);

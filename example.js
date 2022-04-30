@@ -1,15 +1,16 @@
-newCanvas(1000, 500);		//Creates the canvas
-let allImagesLoaded = true; 	//true if no images to load.
+newCanvas(1000, 500); //Creates the canvas
 
 //var
+let v = new Vector(100, 100);
+//---------------------------
 
-//--------------------------- 
-
-if (allImagesLoaded) main();
-
+run(main, 60);
 function main(){
-	requestAnimationFrame(main); //do not delete this line, it allow the canvas to be updated every frame
+	clear();
 	background(0);
+	v.setAngle(v.angle() + Math.PI/12);
+	fill(255);
+	line(500, 250, 500+v.x, 250+v.y);
 }
 
 

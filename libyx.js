@@ -5,6 +5,8 @@ var ctx = canvas.getContext("2d");
 var width = 100, height = 100;
 window.addEventListener("keydown", keyDown, false);
 window.addEventListener("keyup", keyUp, false);
+let nextCall = 0;
+
 
 var rectCenter = "TL";
 var textFontSize = 32;
@@ -42,6 +44,18 @@ function clear() {
     ctx.clearRect(0, 0, width, height);
 }
 
+/**
+ * Run the app at the desired framerate
+ * @param app root function of the application, must have no arguments
+ * @param framerate number of frame per seconds which will be displayed
+ */
+function run(app, framerate = 60) {
+    requestAnimationFrame(() => run(app, framerate));
+    if (nextCall <= Date.now()){
+        nextCall = Date.now() + 1000/framerate;
+        app();
+    }
+}
 //===============================================
 
 //Useful functions===============================
@@ -341,8 +355,8 @@ function Vector(x, y) {
      */
     this.setAngle = function (a) {
         let magnitude = this.magnitude();
-        this.x = magnitude * Math.cos(-a);
-        this.y = magnitude * Math.sin(-a);
+        this.x = magnitude * Math.cos(a);
+        this.y = magnitude * Math.sin(a);
     }
 }
 //===============================================

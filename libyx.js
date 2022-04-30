@@ -7,8 +7,7 @@ window.addEventListener("keydown", keyDown, false);
 window.addEventListener("keyup", keyUp, false);
 let nextCall = 0;
 
-
-var rectCenter = "TL";
+var rectCenterVar = "TL";
 var textFontSize = 32;
 var keys = [], nbKeys = 0;
 keys[0] = 0;
@@ -89,7 +88,7 @@ function fill(a, b, c, d) {
  * @param a Center (TR, TL, BR, BL, C) (i.e. Top-Right, Top-Left, Bottom-Right, Bottom-Left, Center)
  */
 function rectCenter(a) {
-    rectCenter = a;
+    rectCenterVar = a;
 }
 
 /**
@@ -100,7 +99,7 @@ function rectCenter(a) {
  * @param h height
  */
 function rect(x, y, w, h) {
-    switch (rectCenter) {
+    switch (rectCenterVar) {
         case"TL":
             ctx.fillRect(x, y, w, h);
             break;

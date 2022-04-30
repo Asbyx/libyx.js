@@ -1,12 +1,11 @@
 newCanvas(1000, 500);		//Creates the canvas
-let allImagesLoaded = true; 		//true if no images to load.
+let allImagesLoaded = true; 	//true if no images to load.
 
 //var
 
 //--------------------------- 
 
-// /!\  DON'T FORGET allImagesLoaded = true IN THE LAST ONLOAD /!\
-if (allImagesLoaded) main(); //todo: Do a more user-friendly way
+if (allImagesLoaded) main();
 
 function main(){
 	requestAnimationFrame(main); //do not delete this line, it allow the canvas to be updated every frame
